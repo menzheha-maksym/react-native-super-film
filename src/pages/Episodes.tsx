@@ -17,7 +17,6 @@ const Episodes: React.FC = ({}) => {
     dispatch(fetchEpisodesByDateAsync(date))
       .unwrap()
       .then(episodes => {
-        console.log(episodes);
         setEpisodesData(episodes);
       });
   }, [date, dispatch]);
