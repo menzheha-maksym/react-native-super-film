@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {RootState} from '../store';
 
-type Episode = {
+export type Episode = {
   id: number;
   url: string;
   name: string;
