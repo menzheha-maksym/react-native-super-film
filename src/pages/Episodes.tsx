@@ -11,7 +11,13 @@ import {
 import EpisodeComponent from '../components/EpisodeComponent';
 import {useAppDispatch, useAppSelector} from '../redux/hooks';
 import {selectDateString} from '../redux/reducers/calendarSlice';
-import {fetchEpisodesByDateAsync} from '../redux/reducers/episodesSlice';
+import {
+  fetchEpisodesByDateAsync,
+  selectShowingMore,
+  selectShownEpisodes,
+  showLess,
+  showMore,
+} from '../redux/reducers/episodesSlice';
 import {Episode} from '../redux/reducers/types/Episode';
 
 const styles = StyleSheet.create({
@@ -50,28 +56,25 @@ const styles = StyleSheet.create({
 
 const Episodes: React.FC = ({}) => {
   const date = useAppSelector(selectDateString);
+  const showingMore = useAppSelector(selectShowingMore);
+  const shownEpisodesData = useAppSelector(selectShownEpisodes);
   const dispatch = useAppDispatch();
   const [allEpisodesData, setAllEpisodesData] = useState<Episode[]>();
-  const [shownEpisodesData, setShownEpisodesData] = useState<Episode[]>();
-  const [showingMore, setShowingMore] = useState(false);
 
   useEffect(() => {
     dispatch(fetchEpisodesByDateAsync(date))
       .unwrap()
       .then(episodes => {
         setAllEpisodesData(episodes);
-        setShownEpisodesData(episodes.slice(0, 4));
       });
   }, [date, dispatch]);
 
   function handleShowMorePress() {
-    setShowingMore(true);
-    setShownEpisodesData(allEpisodesData);
+    dispatch(showMore());
   }
 
   function handleShowLessPress() {
-    setShowingMore(false);
-    setShownEpisodesData(allEpisodesData!.slice(0, 4));
+    dispatch(showLess());
   }
 
   return (
@@ -82,7 +85,7 @@ const Episodes: React.FC = ({}) => {
         </Text>
       </View>
 
-      {shownEpisodesData ? (
+      {allEpisodesData ? (
         <ScrollView>
           {shownEpisodesData.map(episode => {
             return <EpisodeComponent key={episode.id} episode={episode} />;
