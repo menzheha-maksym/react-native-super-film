@@ -1,5 +1,7 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {useAppDispatch} from '../redux/hooks';
+import {show} from '../redux/reducers/originalImageSlice';
 import {Episode} from '../redux/reducers/types/Episode';
 
 interface EpisodeComponentProps {
@@ -42,16 +44,20 @@ const styles = StyleSheet.create({
 });
 
 const EpisodeComponent: React.FC<EpisodeComponentProps> = ({episode}) => {
+  const dispatch = useAppDispatch();
   return (
     <View style={styles.container}>
-      <View>
+      <TouchableOpacity
+        onPress={() =>
+          dispatch(show({show: true, imageURL: episode.show.image.original}))
+        }>
         {episode.show.image ? (
           <Image
             style={styles.image}
             source={{uri: episode.show.image.medium}}
           />
         ) : null}
-      </View>
+      </TouchableOpacity>
 
       <View style={styles.detailsContainer}>
         <View>

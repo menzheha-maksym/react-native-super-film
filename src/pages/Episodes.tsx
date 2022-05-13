@@ -2,6 +2,7 @@ import moment from 'moment';
 import React, {useEffect, useState} from 'react';
 import {
   Dimensions,
+  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -18,6 +19,7 @@ import {
   showLess,
   showMore,
 } from '../redux/reducers/episodesSlice';
+import {selectOriginalImage, show} from '../redux/reducers/originalImageSlice';
 import {Episode} from '../redux/reducers/types/Episode';
 
 const styles = StyleSheet.create({
@@ -29,6 +31,15 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     borderBottomWidth: 0.5,
     borderBottomColor: 'grey',
+  },
+  originalImageContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  originalImage: {
+    width: Dimensions.get('window').width / 1.1,
+    height: Dimensions.get('window').height / 1.3,
+    borderRadius: 10,
   },
   dateText: {
     textAlign: 'center',
@@ -58,6 +69,7 @@ const Episodes: React.FC = ({}) => {
   const date = useAppSelector(selectDateString);
   const showingMore = useAppSelector(selectShowingMore);
   const shownEpisodesData = useAppSelector(selectShownEpisodes);
+  const originalImage = useAppSelector(selectOriginalImage);
   const dispatch = useAppDispatch();
   const [allEpisodesData, setAllEpisodesData] = useState<Episode[]>();
 
@@ -84,6 +96,18 @@ const Episodes: React.FC = ({}) => {
           {moment(date).format('DD MMM YYYY')}
         </Text>
       </View>
+
+      {originalImage.isShowing ? (
+        <View style={styles.originalImageContainer}>
+          <TouchableOpacity
+            onPress={() => dispatch(show({show: false, imageURL: ''}))}>
+            <Image
+              style={styles.originalImage}
+              source={{uri: originalImage.imageURL}}
+            />
+          </TouchableOpacity>
+        </View>
+      ) : null}
 
       {allEpisodesData ? (
         <ScrollView>
