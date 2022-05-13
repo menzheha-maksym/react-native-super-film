@@ -49,6 +49,7 @@ export const episodesSlice = createSlice({
         state.status = 'idle';
         state.episodes = action.payload;
         state.shownEpisodes = action.payload.slice(0, 4);
+        state.showingMore = false;
       });
   },
 });
