@@ -40,6 +40,7 @@ const CalendarComponent: React.FC<CalendarProps> = ({navigation}) => {
               flex: 1,
               padding: 10,
               textAlign: 'center',
+              alignItems: 'center',
             },
             week: {
               marginTop: 0,
