@@ -96,7 +96,11 @@ const Episodes: React.FC = ({}) => {
               showingMore ? handleShowLessPress() : handleShowMorePress()
             }>
             <Text style={styles.showMoreText}>
-              {showingMore ? <Text>Show less</Text> : <Text>Show More</Text>}
+              {showingMore ? (
+                <Text>Show Less</Text>
+              ) : (
+                <Text>Show {allEpisodesData!.length} More</Text>
+              )}
             </Text>
           </TouchableOpacity>
         </ScrollView>
