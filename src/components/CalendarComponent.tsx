@@ -1,6 +1,5 @@
 import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import moment from 'moment';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Calendar} from 'react-native-calendars';
@@ -28,7 +27,9 @@ const CalendarComponent: React.FC<CalendarProps> = ({navigation}) => {
       <Calendar
         headerStyle={styles.headerStyle}
         renderHeader={(date: Date) => (
-          <Text style={styles.headerMonth}>{moment(date).format('MMMM')}</Text>
+          <Text style={styles.headerMonth}>
+            {new Date(date).toLocaleDateString('en-gb', {month: 'long'})}
+          </Text>
         )}
         theme={{
           arrowColor: 'black',
