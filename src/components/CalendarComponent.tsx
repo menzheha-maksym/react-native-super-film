@@ -30,7 +30,25 @@ const CalendarComponent: React.FC<CalendarProps> = ({navigation}) => {
         renderHeader={(date: Date) => (
           <Text style={styles.headerMonth}>{moment(date).format('MMMM')}</Text>
         )}
-        theme={{arrowColor: 'black'}}
+        theme={{
+          arrowColor: 'black',
+          //@ts-ignore -- works, but typescript gets angry
+          'stylesheet.calendar.main': {
+            dayContainer: {
+              borderColor: '#D1D3D4',
+              borderWidth: 1,
+              flex: 1,
+              padding: 10,
+              textAlign: 'center',
+            },
+            week: {
+              marginTop: 0,
+              marginBottom: 0,
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+            },
+          },
+        }}
         onDayPress={day => {
           dispatch(setDateString(day));
           navigation.navigate('Episodes');
