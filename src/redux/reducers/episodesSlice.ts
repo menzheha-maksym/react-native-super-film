@@ -20,6 +20,7 @@ export type Episode = {
       medium: string;
       original: string;
     };
+    premiered: string;
   };
   //_links
 };
