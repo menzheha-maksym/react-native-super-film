@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {Episode} from '../redux/reducers/episodesSlice';
+import {Episode} from '../redux/reducers/types/Episode';
 
 interface EpisodeComponentProps {
   episode: Episode;

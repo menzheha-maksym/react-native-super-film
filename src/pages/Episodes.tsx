@@ -11,10 +11,8 @@ import {
 import EpisodeComponent from '../components/EpisodeComponent';
 import {useAppDispatch, useAppSelector} from '../redux/hooks';
 import {selectDateString} from '../redux/reducers/calendarSlice';
-import {
-  Episode,
-  fetchEpisodesByDateAsync,
-} from '../redux/reducers/episodesSlice';
+import {fetchEpisodesByDateAsync} from '../redux/reducers/episodesSlice';
+import {Episode} from '../redux/reducers/types/Episode';
 
 const styles = StyleSheet.create({
   container: {
