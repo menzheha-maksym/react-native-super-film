@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import EpisodeComponent from '../components/EpisodeComponent';
 import {useAppDispatch, useAppSelector} from '../redux/hooks';
 import {selectDateString} from '../redux/reducers/calendarSlice';
@@ -25,7 +25,7 @@ const Episodes: React.FC = ({}) => {
   return (
     <View>
       <Text>Episodes</Text>
-      <View>
+      <ScrollView>
         {episodesData ? (
           episodesData.map(episode => {
             return <EpisodeComponent key={episode.id} episode={episode} />;
@@ -33,7 +33,7 @@ const Episodes: React.FC = ({}) => {
         ) : (
           <Text>loading...</Text>
         )}
-      </View>
+      </ScrollView>
     </View>
   );
 };
