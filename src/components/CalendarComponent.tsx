@@ -20,6 +20,7 @@ const CalendarComponent: React.FC<CalendarProps> = ({navigation}) => {
           dispatch(setDateString(day));
           navigation.navigate('Episodes');
         }}
+        hideDayNames={true}
       />
     </View>
   );
