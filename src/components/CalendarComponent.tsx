@@ -30,7 +30,7 @@ const CalendarComponent: React.FC<CalendarProps> = ({navigation}) => {
         renderHeader={(date: Date) => (
           <Text style={styles.headerMonth}>{moment(date).format('MMMM')}</Text>
         )}
-        arrow
+        theme={{arrowColor: 'black'}}
         onDayPress={day => {
           dispatch(setDateString(day));
           navigation.navigate('Episodes');
