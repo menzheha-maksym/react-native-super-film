@@ -56,6 +56,10 @@ const CalendarComponent: React.FC<CalendarProps> = ({navigation}) => {
               borderWidth: 1,
               borderRadius: 16,
             },
+            todayText: {
+              color: 'black',
+              fontWeight: 'bold',
+            },
           },
         }}
         onDayPress={day => {
