@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingLeft: 25,
     paddingRight: 25,
+    width: '80%',
   },
   image: {
     width: 80,
