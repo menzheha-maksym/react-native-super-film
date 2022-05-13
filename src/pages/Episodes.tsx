@@ -24,7 +24,6 @@ const Episodes: React.FC = ({}) => {
 
   return (
     <View>
-      <Text>Episodes</Text>
       <ScrollView>
         {episodesData ? (
           episodesData.map(episode => {
