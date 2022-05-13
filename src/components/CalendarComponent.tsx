@@ -49,6 +49,13 @@ const CalendarComponent: React.FC<CalendarProps> = ({navigation}) => {
               justifyContent: 'space-around',
             },
           },
+          'stylesheet.day.basic': {
+            today: {
+              borderColor: 'red',
+              borderWidth: 1,
+              borderRadius: 16,
+            },
+          },
         }}
         onDayPress={day => {
           dispatch(setDateString(day));
