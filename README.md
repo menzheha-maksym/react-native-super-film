@@ -1,3 +1,6 @@
+***backup before marging with branch quanOfEpisodesInWindow***
+release v1
+
 # Критерии приемки.
 
 - [x] 1. Наличие ссылки на git репозиторий содержащий исходный код задания.
