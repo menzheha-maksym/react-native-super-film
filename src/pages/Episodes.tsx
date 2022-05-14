@@ -9,7 +9,7 @@ import {selectDateString} from '../redux/reducers/calendarSlice';
 import {
   fetchEpisodesByDateAsync,
   selectShownEpisodes,
-  showLess,
+  showLessWithPayload,
 } from '../redux/reducers/episodesSlice';
 import {selectOriginalImage} from '../redux/reducers/originalImageSlice';
 import {Episode} from '../redux/reducers/types/Episode';
@@ -45,7 +45,7 @@ const Episodes: React.FC = ({}) => {
       .then(episodes => {
         setAllEpisodesData(episodes);
         dispatch(
-          showLess(
+          showLessWithPayload(
             /**
              * (window height) - (show more button) - (episodes date) - (app header) / (episode image height with paddings)
              */

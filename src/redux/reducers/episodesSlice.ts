@@ -37,8 +37,21 @@ export const episodesSlice = createSlice({
       state.shownEpisodes = state.episodes;
       state.showingMore = true;
     },
-    // payload: quantity to show
-    showLess: (state, action: PayloadAction<number>) => {
+    /**
+     * first page with episodes list loads
+     * pass 'showLessWithPayload'(payload: quantity to show (calculated dimesions))
+     * then click 'show more'
+     * then when click 'show less' thats no need to pass payload because dimentions does not change
+     * (disable screen rotation?)
+     */
+    showLess: state => {
+      state.shownEpisodes = state.episodes.slice(0, state.lessEpisodesQuantity);
+      state.showingMore = false;
+    },
+    /**
+     * payload: quantity to show
+     */
+    showLessWithPayload: (state, action: PayloadAction<number>) => {
       state.shownEpisodes = state.episodes.slice(0, action.payload);
       state.lessEpisodesQuantity = action.payload;
       state.showingMore = false;
@@ -57,7 +70,7 @@ export const episodesSlice = createSlice({
   },
 });
 
-export const {showMore, showLess} = episodesSlice.actions;
+export const {showMore, showLess, showLessWithPayload} = episodesSlice.actions;
 
 export const selectEpisodes = (state: RootState) => state.episodes.episodes;
 export const selectShownEpisodes = (state: RootState) =>
