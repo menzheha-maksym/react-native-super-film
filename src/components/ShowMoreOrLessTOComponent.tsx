@@ -43,6 +43,10 @@ const ShowMoreOrLessTOComponent: React.FC = ({}) => {
     dispatch(showLess());
   }
 
+  if (allEpisodesData.length < 4) {
+    return null;
+  }
+
   return (
     <TouchableOpacity
       style={styles.showMore}
@@ -53,7 +57,7 @@ const ShowMoreOrLessTOComponent: React.FC = ({}) => {
         {showingMore ? (
           <Text>Show Less</Text>
         ) : (
-          <Text>Show {allEpisodesData!.length} More</Text>
+          <Text>Show {allEpisodesData!.length - 4} More</Text>
         )}
       </Text>
     </TouchableOpacity>
