@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   dateText: {
     textAlign: 'center',
     fontWeight: 'bold',
+    color: 'black',
   },
 });
 
@@ -49,7 +50,7 @@ const Episodes: React.FC = ({}) => {
     <View style={styles.container}>
       <View style={styles.dateContainer}>
         <Text style={styles.dateText}>
-          {moment(date).format('DD MMM YYYY')}
+          {moment(date).format('DD MMMM YYYY')}
         </Text>
       </View>
 

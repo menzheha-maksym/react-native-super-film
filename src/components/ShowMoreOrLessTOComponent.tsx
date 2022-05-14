@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   },
   showMoreText: {
     textAlign: 'center',
+    color: 'grey',
   },
 });
 

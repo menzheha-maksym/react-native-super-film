@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   },
   textUnderTv: {
     textAlign: 'center',
+    color: 'black',
   },
 });
 

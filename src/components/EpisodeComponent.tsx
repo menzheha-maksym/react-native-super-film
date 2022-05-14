@@ -41,6 +41,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(220,220,220)',
     width: 190,
   },
+  seasonAndEpisodeText: {
+    color: 'grey',
+  },
 });
 
 const EpisodeComponent: React.FC<EpisodeComponentProps> = ({episode}) => {
@@ -68,7 +71,7 @@ const EpisodeComponent: React.FC<EpisodeComponentProps> = ({episode}) => {
         </View>
 
         <View style={styles.seasonAndEpisode}>
-          <Text>
+          <Text style={styles.seasonAndEpisodeText}>
             Season: {episode.season} Episode: {episode.number}
           </Text>
         </View>

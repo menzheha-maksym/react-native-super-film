@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
   },
   headerMonth: {
     fontWeight: 'bold',
+    color: 'black',
   },
 });
 
