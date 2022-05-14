@@ -3,6 +3,7 @@ import {Dimensions, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {useAppDispatch, useAppSelector} from '../redux/hooks';
 import {
   selectEpisodes,
+  selectLessEpisodesQuantity,
   selectShowingMore,
   showLess,
   showMore,
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
 const ShowMoreOrLessTOComponent: React.FC = ({}) => {
   const showingMore = useAppSelector(selectShowingMore);
   const allEpisodesData = useAppSelector(selectEpisodes);
+  const lessEpisodesQuantity = useAppSelector(selectLessEpisodesQuantity);
   const dispatch = useAppDispatch();
 
   function handleShowMorePress() {
@@ -52,7 +54,7 @@ const ShowMoreOrLessTOComponent: React.FC = ({}) => {
     );
   }
 
-  if (allEpisodesData.length < 4) {
+  if (allEpisodesData.length <= lessEpisodesQuantity) {
     return null;
   }
 

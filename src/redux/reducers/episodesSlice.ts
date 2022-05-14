@@ -7,6 +7,7 @@ export interface EpisodesState {
   episodes: Episode[];
   shownEpisodes: Episode[];
   showingMore: boolean;
+  lessEpisodesQuantity: number;
 }
 
 const initialState: EpisodesState = {
@@ -14,6 +15,7 @@ const initialState: EpisodesState = {
   episodes: [],
   shownEpisodes: [],
   showingMore: false,
+  lessEpisodesQuantity: 0,
 };
 
 export const fetchEpisodesByDateAsync = createAsyncThunk(
@@ -38,6 +40,7 @@ export const episodesSlice = createSlice({
     // payload: quantity to show
     showLess: (state, action: PayloadAction<number>) => {
       state.shownEpisodes = state.episodes.slice(0, action.payload);
+      state.lessEpisodesQuantity = action.payload;
       state.showingMore = false;
     },
   },
@@ -61,5 +64,7 @@ export const selectShownEpisodes = (state: RootState) =>
   state.episodes.shownEpisodes;
 export const selectShowingMore = (state: RootState) =>
   state.episodes.showingMore;
+export const selectLessEpisodesQuantity = (state: RootState) =>
+  state.episodes.lessEpisodesQuantity;
 
 export default episodesSlice.reducer;
