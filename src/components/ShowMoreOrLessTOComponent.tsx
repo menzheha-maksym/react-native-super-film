@@ -7,6 +7,7 @@ import {
   showLess,
   showMore,
 } from '../redux/reducers/episodesSlice';
+import Icon from 'react-native-vector-icons/Entypo';
 
 const styles = StyleSheet.create({
   showMore: {
@@ -55,9 +56,15 @@ const ShowMoreOrLessTOComponent: React.FC = ({}) => {
       }>
       <Text style={styles.showMoreText}>
         {showingMore ? (
-          <Text>Show Less</Text>
+          <Text>
+            Show Less {'  '}
+            <Icon name="chevron-up" size={15} color="black" />
+          </Text>
         ) : (
-          <Text>Show {allEpisodesData!.length - 4} More</Text>
+          <Text>
+            Show {allEpisodesData!.length - 4} More {'  '}
+            <Icon name="chevron-down" size={15} color="black" />
+          </Text>
         )}
       </Text>
     </TouchableOpacity>
