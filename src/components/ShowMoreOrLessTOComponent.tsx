@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {Dimensions, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {useAppDispatch, useAppSelector} from '../redux/hooks';
 import {
   selectEpisodes,
@@ -42,7 +42,14 @@ const ShowMoreOrLessTOComponent: React.FC = ({}) => {
   }
 
   function handleShowLessPress() {
-    dispatch(showLess());
+    dispatch(
+      showLess(
+        /**
+         * (window height) - (show more button) - (episodes date) - (app header) / (episode image height with paddings)
+         */
+        Math.floor(Dimensions.get('window').height - 50 - 30 - 40) / 150,
+      ),
+    );
   }
 
   if (allEpisodesData.length < 4) {

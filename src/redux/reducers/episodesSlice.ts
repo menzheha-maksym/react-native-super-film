@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from '../store';
 import {Episode} from './types/Episode';
 
@@ -35,8 +35,9 @@ export const episodesSlice = createSlice({
       state.shownEpisodes = state.episodes;
       state.showingMore = true;
     },
-    showLess: state => {
-      state.shownEpisodes = state.episodes.slice(0, 4);
+    // payload: quantity to show
+    showLess: (state, action: PayloadAction<number>) => {
+      state.shownEpisodes = state.episodes.slice(0, action.payload);
       state.showingMore = false;
     },
   },
@@ -48,7 +49,6 @@ export const episodesSlice = createSlice({
       .addCase(fetchEpisodesByDateAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.episodes = action.payload;
-        state.shownEpisodes = action.payload.slice(0, 4);
         state.showingMore = false;
       });
   },

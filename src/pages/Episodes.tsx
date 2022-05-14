@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, {useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
 import EpisodeComponent from '../components/EpisodeComponent';
 import OriginalImageComponent from '../components/OriginalImageComponent';
 import ShowMoreOrLessTOComponent from '../components/ShowMoreOrLessTOComponent';
@@ -9,6 +9,7 @@ import {selectDateString} from '../redux/reducers/calendarSlice';
 import {
   fetchEpisodesByDateAsync,
   selectShownEpisodes,
+  showLess,
 } from '../redux/reducers/episodesSlice';
 import {selectOriginalImage} from '../redux/reducers/originalImageSlice';
 import {Episode} from '../redux/reducers/types/Episode';
@@ -43,7 +44,16 @@ const Episodes: React.FC = ({}) => {
       .unwrap()
       .then(episodes => {
         setAllEpisodesData(episodes);
+        dispatch(
+          showLess(
+            /**
+             * (window height) - (show more button) - (episodes date) - (app header) / (episode image height with paddings)
+             */
+            Math.floor(Dimensions.get('window').height - 50 - 30 - 40) / 150,
+          ),
+        );
       });
+    console.log((Dimensions.get('window').height - 50 - 30 - 40) / 150);
   }, [date, dispatch]);
 
   return (
