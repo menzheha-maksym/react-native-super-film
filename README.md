@@ -1,3 +1,6 @@
+***In this branch: counted quantity of episodes to display in window***
+
+
 # Критерии приемки.
 
 - [x] 1. Наличие ссылки на git репозиторий содержащий исходный код задания.
