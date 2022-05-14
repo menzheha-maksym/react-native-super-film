@@ -17,3 +17,17 @@ https://drive.google.com/drive/folders/1Pk2tdkPJbDKoal--aR898wPD_SlnSnKN?usp=sha
   - [ ] При наличии возможности предоставление доступа к iOS версии (если отсутствует опыт или необходимое окружение для сборки под iOS - не тратьте время, на рабочем месте обучим и предоставим все необходимое).
 
 
+## build
+
+### Windows
+
+build tested on 
+| Resolution  |  API  |          Target          | CPU/ABI |
+| :---------: | :---: | :----------------------: | :-----: |
+| 1080 x 2160 |  29   | Android 10 (Google APIs) | x86_64  |
+
+1. Generate a private signing key using keytool
+https://reactnative.dev/docs/signed-apk-android#windows
+2. Setup Gradle variables
+https://reactnative.dev/docs/signed-apk-android#setting-up-gradle-variables
+3. cd android $$ ./gradlew assembleRelease
