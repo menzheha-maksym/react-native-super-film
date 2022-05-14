@@ -15,7 +15,6 @@ import {Episode} from '../redux/reducers/types/Episode';
 
 const styles = StyleSheet.create({
   container: {
-    // height: Dimensions.get('window').height,
     flex: 1,
   },
   dateContainer: {
