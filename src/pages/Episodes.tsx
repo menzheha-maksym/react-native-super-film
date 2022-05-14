@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, {useEffect, useState} from 'react';
-import {Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import EpisodeComponent from '../components/EpisodeComponent';
 import OriginalImageComponent from '../components/OriginalImageComponent';
 import ShowMoreOrLessTOComponent from '../components/ShowMoreOrLessTOComponent';
@@ -15,7 +15,8 @@ import {Episode} from '../redux/reducers/types/Episode';
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height / 1.15,
+    // height: Dimensions.get('window').height,
+    flex: 1,
   },
   dateContainer: {
     paddingTop: 15,
